@@ -13,7 +13,6 @@ function getWalletFromSeed(mnemonic) {
     const masterKey = deriveMasterKey(mnemonic)
     const keys = deriveKeypair(masterKey)
     const address = getAddress(keys.publicKey.hex)
-    console.log(keys, address)
     return {
         keys,
         address
@@ -28,7 +27,6 @@ function signWithPrivateKey(signMessage, privateKey) {
     const signHash = Buffer.from(CryptoJS.SHA256(signMessageString).toString(), `hex`)
     
 
-    // console.log(signHash)
     // const auuu = secp256k1.sign(signHash, privateKey)
     const signature = secp256k1.sign(signHash, privateKey)
     // const { signature } = secp256k1.sign(signHash, privateKey)
